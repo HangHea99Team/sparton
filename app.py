@@ -34,6 +34,7 @@ def profileMod():
     techStack_receive = request.form['techStack_give']
     email_receive = request.form['email_give']
     gitUrl_receive = request.form['gitUrl_give']
+    like_receive = request.form['like_give']
 
     doc = {
         'userId': id_receive,
@@ -44,6 +45,7 @@ def profileMod():
         'stack': techStack_receive,
         'email': email_receive,
         'github': gitUrl_receive,
+        'like': int(like_receive),
     }
 
     db.card.insert_one(doc)
@@ -53,6 +55,14 @@ def profileMod():
 @app.route("/card/detail", methods=["GET"])
 def getUserInfo():
     userId = request.args.get('search_id')
+    userInfo = db.card.find_one({'userId':userId})
+    return jsonify({'userInfo':dumps(userInfo), 'msg': '사용자 정보 불러오기 완료'})
+    
+@app.route("/card/likeUser", methods=["GET"])
+def thisUserLike():
+    userId = request.args.get('search_id')
+    userInfo = db.card.find_one({'userId':userId})
+    db.card.update_one({'userId': userId}, {'$set': {'like': userInfo['like']+1}})
     userInfo = db.card.find_one({'userId':userId})
     return jsonify({'userInfo':dumps(userInfo), 'msg': '사용자 정보 불러오기 완료'})
 
@@ -80,8 +90,6 @@ def saveReple():
         return jsonify({'msg': '댓글 작성 완료!', 'reple_list': find_reple})
 
 # login
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
@@ -124,6 +132,7 @@ def signUp():
         password = request.form['pass1']
         password_check = request.form['pass2']
         email = request.form['email']
+        writeCard = False;
         exist_user = db.members.find_one({"userId": userId})
         if exist_user:
             return ({'msg': "이미 존재하는 아이디 입니다.", "result": "fail"})
@@ -135,7 +144,8 @@ def signUp():
             "userName": userName,
             "password": password,
             "email": email,
-            "userImage": "https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMyAg/MDAxNjA0MjI5NDA4NDMy.5zGHwAo_UtaQFX8Hd7zrDi1WiV5KrDsPHcRzu3e6b8Eg.IlkR3QN__c3o7Qe9z5_xYyCyr2vcx7L_W1arNFgwAJwg.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%ED%8C%8C%EC%8A%A4%ED%85%94.jpg?type=w800"
+            "userImage": "https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMyAg/MDAxNjA0MjI5NDA4NDMy.5zGHwAo_UtaQFX8Hd7zrDi1WiV5KrDsPHcRzu3e6b8Eg.IlkR3QN__c3o7Qe9z5_xYyCyr2vcx7L_W1arNFgwAJwg.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%ED%8C%8C%EC%8A%A4%ED%85%94.jpg?type=w800",
+            "writeCard": writeCard
         }
         db.members.insert_one(doc)
 

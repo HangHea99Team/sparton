@@ -60,8 +60,15 @@
         src="https://occ-0-586-999.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABbsGiKsKMaZdJWqbLKnNWXVCLtw2VP56ioYDZoXf0mS94nS7IKSlnScZKh-qaVeCkYeo5pSAhkZXf5UJwN4WVoQ-nni_ys0ainsshiYTSGSB.png?r=74b"
     />
     <h1>Who R U</h1>
-    <p>당신을 소개해주세요!</p>
-    <button type='button' onclick="location.href='profile'">소개하기</button>
+        <h1>Who R U</h1>
+        <p>당신을 소개해주세요!</p>
+        <button type='button' class="card_modify_btn" onclick="location.href='profile'">
+            {% if session["userId"] %}
+                프로필 수정하기
+            {% else %}
+                프로필 입력하기
+            {% endif %}
+        </button>
     </div>
 </header>
 <section class="section_wrap">
@@ -95,14 +102,16 @@
                                 <h3 class="userInfo-id" id="userInfo-id"></h3>
                             </div>
                             <div class="nameBox-footer">
-                                <div>
-                                    <span class="userInfo-name" id="userInfo-name"></span>
-                                    <span class="userInfo-job" id="userInfo-job"></span>
-                                </div>
-                                <div>
-                                    <span class="userInfo-email" id="userInfo-email"></span>
-                                    <span class="userInfo-git" id="userInfo-git"></span>
-                                </div>
+                                <span class="userInfo-name" id="userInfo-name"></span>
+                                <span class="userInfo-job" id="userInfo-job"></span>
+                                <a href="mailto:kkhw1202@gmail.com" class="userInfo-email" id="userInfo-email">
+                                    <span class="material-icons userInfo-icon">
+                                        email
+                                    </span>
+                                </a>
+                                <a href="" class="userInfo-git" id="userInfo-git" target="_blank">
+                                    <img src=".././static/img/github-mark.png" class="userInfo-img"/>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -113,26 +122,37 @@
                         <p id="userInfo-about">
                             백엔드 개발자입니다.
                         </p>
-                        <p>
-                            최근 댓글
-                            <span id="cardPop_commentTime"> 2분전 </span>
-                        </p>
-                    </header>
-                    <section class="comment-section">
-                        <ul class="comment-box">
-                            <li class="comment-item">
-                                <div class="comment-user">
-                                    <img src="https://avatars.githubusercontent.com/u/51357635?s=400&u=36fd01b69ccd7729620c086927f9c0847ffdb0e1&v=4" id="comment-user-img"/>
-                                </div>
-                                <div class="comment-content">
-                                    <div class="content-box">
-                                        <p id="comment-user-name">
-                                            Wooglim
-                                        </p>
-                                        <p id="comment-user-content">
-                                            이 사람 기가맥힙니다.
-                                        </p>
+                    </div>
+                </section>
+                <footer class="userCard-comment">
+                    <!-- 댓글 -->
+                    <div class="comment-wrap">
+                        <header class="comment-header">
+                            <button class="reset_style_btn" onclick="likeThisUser()">
+                                좋아요
+                                <span id="cardPop_like"></span>
+                            </button>
+                            <p>
+                                최근 댓글
+                                <span id="cardPop_commentTime"> 2분전 </span>
+                            </p>
+                        </header>
+                        <section class="comment-section">
+                            <ul class="comment-box">
+                                <li class="comment-item">
+                                    <div class="comment-user">
+                                        <img src=""
+                                             id="comment-user-img"/>
                                     </div>
+                                    <div class="comment-content">
+                                        <div class="content-box">
+                                            <p id="comment-user-name">
+                                                Wooglim
+                                            </p>
+                                            <p id="comment-user-content">
+                                                이 사람 기가맥힙니다.
+                                            </p>
+                                        </div>
                                     <div class="comment">
                                         <p id="comment-time">
                                             2분전

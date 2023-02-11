@@ -111,16 +111,9 @@
     border-radius: 5px;
 }
 
-/* 
-`<div class="col">
-<div class="card h-100">
-<img src="${userImg}"
-class="userImg">
-<div class="card-body">
-<h5 class="userName">${userName}</h5>
-<p class="info">${info}</p>
-<p class="job">${job}</p>
-<p class="stack">${stack}</p>
-</div>
-</div>
-</div>` */
+.card_modify_btn{
+    width: 240px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
