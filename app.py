@@ -111,9 +111,6 @@ def signUp():
 
         return ({'msg': '회원가입 성공!', "result": "success"})
 
-# board
-
-
 @app.route('/board')
 def board():
     return render_template('board.html')
@@ -121,21 +118,19 @@ def board():
 
 @app.route("/board_save", methods=["POST"])
 def board_post():
+    # num_receive = request.form["num_give"]
     writer_receive = request.form["writer_give"]
     comment_receive = request.form["comment_give"]
     date_receive = request.form["date_give"]
 
     if writer_receive != '':
-        count = 1
-        for i in range(10):
-            doc = {
-                'num': count,
-                'writerId': writer_receive,
-                'comment': comment_receive,
-                'date': date_receive
-            }
-            db.board.insert_one(doc)
-            count += 1
+        doc = {
+            # 'num': num_receive,
+            'writerId': writer_receive,
+            'comment': comment_receive,
+            'date': date_receive
+        }
+        db.board.insert_one(doc)
     return jsonify({'msg': '댓글 작성 완료!'})
 
 
@@ -144,6 +139,16 @@ def board_get():
     board_list = list(db.board.find({}, {'_id': False}))
     return jsonify({'board_list': board_list})
 
+
+# my page
+@app.route('/mypage')
+def mypage():
+    return render_template('mypage.html')
+
+@app.route('/show', methods=["GET"])
+def show_get():
+    info = db.card.find_one({'userId':'hyuk'})
+    return jsonify({'userInfo': info})
 
 # port 는 자신이 사용할 port 지정
 if __name__ == '__main__':
