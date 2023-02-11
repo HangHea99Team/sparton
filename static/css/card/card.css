@@ -36,7 +36,6 @@
     text-align: center;
     cursor: pointer;
     z-index: 1;
-    background: #333333;
     color: #FFFFFF;
 }
 
@@ -110,11 +109,12 @@
 
 .nameBox-footer {
     display: flex;
-    flex-direction: column;
     flex: 1;
     gap: 14px;
     font-size: 18px;
     font-weight: bold;
+    align-items: center;
+    padding-bottom: 40px;
 }
 
 .nameBox-footer div {
@@ -141,6 +141,12 @@
     gap: 20px;
     align-items: center;
     border-top: 2px solid #333333;
+}
+
+.comment-header button{
+    display: flex;
+    align-items: center;
+    gap:4px;
 }
 
 .comment-header span{
@@ -213,4 +219,23 @@
     width: 40px;
     font-weight: bold;
     color: #1453ff !important;
+}
+
+.nameBox-footer a{
+    all: unset;
+    cursor: pointer;
+    padding: 0px;
+}
+
+.userInfo-icon{
+    font-size: 28px;
+}
+
+.userInfo-img{
+    width:24px;
+    height: 24px;
+}
+
+#cardPop_like{
+    padding-top: 1px;
 }
