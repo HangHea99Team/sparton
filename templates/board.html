@@ -95,7 +95,7 @@
                 {#location.href = '/login'#}
                 location.href = '/'
             } else if (comment == ''){
-                alert('한줄평은 공백이 될 수 없습니다.')
+                alert('댓글을 작성해 주세요.')
                 window.location.reload()
             } else {
                 $.ajax({
@@ -119,11 +119,11 @@
                 success: function (response) {
                     let rows = response['board_list']
                     for (let i = 0; i < rows.length; i++) {
-                        let num = rows[i]['num']
+                        {#let num = rows[i]['num']#}
                         let writer = rows[i]['writerId']
                         let comment = rows[i]['comment']
                         let date = rows[i]['date']
-                        console.log(num)
+                        {#console.log(num)#}
 
                         let temp_html = `<tr>
                                         <th scope="row">${writer}</th>

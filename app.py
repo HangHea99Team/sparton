@@ -25,21 +25,19 @@ def board():
 
 @app.route("/board_save", methods=["POST"])
 def board_post():
+    # num_receive = request.form["num_give"]
     writer_receive = request.form["writer_give"]
     comment_receive = request.form["comment_give"]
     date_receive = request.form["date_give"]
 
     if writer_receive != '':
-        count = 1
-        for i in range(10):
-            doc = {
-                'num': count,
-                'writerId': writer_receive,
-                'comment': comment_receive,
-                'date': date_receive
-            }
-            db.board.insert_one(doc)
-            count += 1
+        doc = {
+            # 'num': num_receive,
+            'writerId': writer_receive,
+            'comment': comment_receive,
+            'date': date_receive
+        }
+        db.board.insert_one(doc)
     return jsonify({'msg': '댓글 작성 완료!'})
 
 
