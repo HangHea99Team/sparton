@@ -5,6 +5,11 @@ function writeComment(){
     let sendUser = document.getElementById('login-userId').value;
     let targetUser = document.getElementById('userInfo-id').innerText;
 
+    if(chkNull(sendUser)){
+        alert("로그인 후 사용가능합니다.")
+        return;
+    }
+
     $.ajax({
         type: 'POST',
         url: '/card/sendReply',
@@ -95,4 +100,12 @@ function loadComment(){
             cardComment.value = '';
         }
     })
+}
+
+function chkNull(str){
+    if(str == '' || str == 'undefined' || str == null){
+        return true
+    }else{
+        return false;
+    }
 }

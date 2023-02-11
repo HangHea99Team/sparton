@@ -108,8 +108,9 @@ def cardSendReply():
 
     sender = db.members.find_one({'userId':send_user})
     senderImg = db.card.find_one({'userId':send_user})
+    print(senderImg)
 
-    if senderImg['userImg'] is None:
+    if senderImg is None:
         senderImg = sender['userImage']
     else:
         senderImg = senderImg['userImg']
