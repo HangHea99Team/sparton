@@ -1,36 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>21조 토이프로젝트 항해 스크린</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Who R U</title>
 
-    <meta property="og:title" content="항해 스크린" />
-    <meta property="og:description" content="21조 토이프로젝트 입니다." />
-    <meta property="og:image" content="https://s3.ap-northeast-2.amazonaws.com/blog.spartacodingclub.kr/sparta-supporters.png" />
+    <meta property="og:title" content="Who R U" />
+    <meta property="og:description" content="당신을 소개해주세요!!" />
+    <meta
+      property="og:image"
+      content="https://s3.ap-northeast-2.amazonaws.com/blog.spartacodingclub.kr/sparta-supporters.png"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- 각자 작업한 CSS 파일은 여기에 첨부 -->
-    <link rel="stylesheet" type="text/css" href=".././static/css/common/reset.css">
-    <link rel="stylesheet" type="text/css" href=".././static/css/common/common.css">
 
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href=".././static/css/common/reset.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href=".././static/css/common/common.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href=".././static/css/common/main.css"
+    />
+  </head>
+  <body>
+    <header class="header_wrap">
+      <div class="login-mypage">
+        <button onclick="open_login()" type="button">Login</button>
+        <button onclick="open_signUP()" type="button">SignUp</button>
+      </div>
+      <div class="mypic">
+        <img
+          src="https://occ-0-586-999.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABbsGiKsKMaZdJWqbLKnNWXVCLtw2VP56ioYDZoXf0mS94nS7IKSlnScZKh-qaVeCkYeo5pSAhkZXf5UJwN4WVoQ-nni_ys0ainsshiYTSGSB.png?r=74b"
+        />
+        <h1>Who R U</h1>
+        <p>당신을 소개해주세요!</p>
+        <button onclick="open_box()">소개하기</button>
+      </div>
+    </header>
+    <section class="section_wrap">
+      <div class="mycards" id="comment-list">
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="cards-box">
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">유저 이름</h5>
+                <p class="card-text">자기소개</p>
+                <p class="mycomment">주특기 스택</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">유저 이름</h5>
+                <p class="card-text">자기소개</p>
+                <p class="mycomment">주특기 스택</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">유저 이름</h5>
+                <p class="card-text">자기소개</p>
+                <p class="mycomment">주특기 스택</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">유저 이름</h5>
+                <p class="card-text">자기소개</p>
+                <p class="mycomment">주특기 스택</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer_wrap"></footer>
 
-<header class="header_wrap">
-    헤더입니다. 화면 안의 로고, 상단 메뉴, 로그인 등이 들어가죠
-</header>
-<section class="section_wrap">
-    섹션입니다. 화면 안의 콘텐츠를 구성하죠
-</section>
-<footer class="footer_wrap">
-    푸터입니다. 화면 안의 가장 아래라고 보시면 됩니다. 사업자 명, 회사 정보 등이 표시되죠.
-</footer>
-
-<!-- 각자 작업한 JS 파일은 여기에 첨부 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-<script src=".././static/js/common/common.js" type="application/javascript"></script>
-
-</body>
+    <!-- 각자 작업한 JS 파일은 여기에 첨부 -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src=".././static/js/common/common.js"
+      type="application/javascript"
+    ></script>
+  </body>
 </html>
