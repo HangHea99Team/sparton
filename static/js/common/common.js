@@ -11,13 +11,14 @@ function listing() {
             $('#cards-box').empty()
             let rows = response['card']
             for(let i = 0; i < rows.length; i++) {
+                let userId = rows[i]['userId']
                 let userImg = rows[i]['userImg']
                 let userName = rows[i]['userName']
                 let info = rows[i]['info']
                 let job = rows[i]['job']
                 let stack = rows[i]['stack']
 
-                let temp_html = `<div class="col">
+                let temp_html = `<div class="col" onclick="viewCardPopup('${userId}')">
                                     <div class="card h-100">
                                         <img src="${userImg}"
                                              class="userImg">
