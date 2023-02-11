@@ -18,62 +18,64 @@ p, span, button, h1, h2, h3, h4, h5, h6 {
     padding: 20px;
 }
 
-.mypage-btn > button, .login-btn > button {
+.logOut-btn > button, .login-btn > button {
     border: none;
-    color: #f77ebd;
+    color: #EB79A8;
     font-size: 20px;
 }
 
 .mypic {
   width: 100%;
   height: 300px;
-  background-position: center 70%;
-  background-size: cover;
-
-  color: black;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.mypic > img {
+.top_img {
   width: 500px;
   height: 200px;
   position: absolute;
   padding: 10px;
-  top: 0;
-  left: 0;
+  top: 10px;
+  left: 10px;
+  z-index: -1;
+}
+
+.bottom_img {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  padding: 10px;
+  top: 150px;
+  right: 0;
   z-index: -1;
 }
 
 .mypic > h1 {
-  font-size: 100px;
-  color: #ff9900;
+  font-size: 120px;
+  color: #f09123;
 }
 
 .mypic > p {
   font-size: 30px;
   margin-top: 20px;
-  color: #f9b855;
+  color: #eca758;
 }
 
 .mypic > button {
     width: 80px;
     height: 50px;
-
     background-color: transparent;
-    color: #056bfa;
-
+    color: #3a8cff;
     border-radius: 50px;
-    border: 2px dashed #056bfa;
-
+    border: 2px dashed #3a8cff;
     margin-top: 20px;
 }
 
 .mypic > button:hover {
-    border: 3px dashed #0a3877;
+    border: 3px dashed #046cff;
 }
 
 .mycards {
@@ -99,13 +101,13 @@ p, span, button, h1, h2, h3, h4, h5, h6 {
 
 .job {
   font-size: 18px;
-  color: #0a3877;
+  color: #003989;
   margin-bottom: 10px;
 }
 
 .stack {
     background-color: #cbdefa;
-    color: #056bfa;
+    color: #3a8cff;
     width: auto;
     padding: 3px;
     border-radius: 5px;
