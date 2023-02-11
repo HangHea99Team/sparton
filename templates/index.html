@@ -1,48 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Who R U</title>
 
-    <meta property="og:title" content="Who R U"/>
-    <meta property="og:description" content="당신을 소개해주세요!!"/>
+    <meta property="og:title" content="Who R U" />
+    <meta property="og:description" content="당신을 소개해주세요!!" />
     <meta
-            property="og:image"
-            content="https://s3.ap-northeast-2.amazonaws.com/blog.spartacodingclub.kr/sparta-supporters.png"
+      property="og:image"
+      content="https://s3.ap-northeast-2.amazonaws.com/blog.spartacodingclub.kr/sparta-supporters.png"
     />
     <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-            crossorigin="anonymous"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap"
+      rel="stylesheet"
     />
 
+    <!-- 각자 작업한 CSS 파일은 여기에 첨부 -->
+
     <link
-            rel="stylesheet"
-            type="text/css"
-            href=".././static/css/common/reset.css"
+      rel="stylesheet"
+      type="text/css"
+      href=".././static/css/common/reset.css"
     />
     <link
-            rel="stylesheet"
-            type="text/css"
-            href=".././static/css/common/common.css"
+      rel="stylesheet"
+      type="text/css"
+      href=".././static/css/common/common.css"
     />
     <link
-            rel="stylesheet"
-            type="text/css"
-            href=".././static/css/common/main.css"
-    />
-    <link
-            rel="stylesheet"
-            type="text/css"
-            href=".././static/css/card/card.css"
-    />
-    <link
-            rel="stylesheet"
-            type="text/css"
-            href=".././static/css/common/init.css"
+      rel="stylesheet"
+      type="text/css"
+      href=".././static/css/common/main.css"
     />
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 </head>
@@ -87,47 +83,35 @@
         </div>
     </div>
 </div>
-
-<div id="user-card-popup" class="user-popup-wrap">
-    <div class="user-popup-container">
-        <div class="user-popup-content">
-            <header class="userCard-header">
-                <!-- 프로필 이미지, 아이디, 유저명, 직업, 이메일, 깃허브 -->
-                <div class="userInfo-wrap">
-                    <img class="userInfo-image"
-                            src="https://avatars.githubusercontent.com/u/51357635?s=400&u=36fd01b69ccd7729620c086927f9c0847ffdb0e1&v=4"/>
-                    <div class="userInfo-NameBox">
-                        <div class="nameBox-header">
-                            <h3 class="userInfo-id">아이디</h3>
-                        </div>
-                        <div class="nameBox-footer">
-                            <div>
-                                <span class="userInfo-name">유저명</span>
-                                <span class="userInfo-job">직업</span>
+    <div id="user-card-popup" class="user-popup-wrap">
+        <div class="user-popup-container">
+            <div class="user-popup-content">
+                <header class="userCard-header">
+                    <!-- 프로필 이미지, 아이디, 유저명, 직업, 이메일, 깃허브 -->
+                    <div class="userInfo-wrap">
+                        <img class="userInfo-image" id="userInfo-image"/>
+                        <div class="userInfo-NameBox">
+                            <div class="nameBox-header">
+                                <h3 class="userInfo-id" id="userInfo-id"></h3>
                             </div>
-                            <div>
-                                <span class="userInfo-email">이메일</span>
-                                <span class="userInfo-git">유저</span>
+                            <div class="nameBox-footer">
+                                <div>
+                                    <span class="userInfo-name" id="userInfo-name"></span>
+                                    <span class="userInfo-job" id="userInfo-job"></span>
+                                </div>
+                                <div>
+                                    <span class="userInfo-email" id="userInfo-email"></span>
+                                    <span class="userInfo-git" id="userInfo-git"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </header>
-            <section class="userCard-content">
-                <!-- 사용자 정보 -->
-                <div class="aboutBox-content">
-                    <p>
-                        백엔드 개발자입니다.
-                    </p>
-                </div>
-            </section>
-            <footer class="userCard-comment">
-                <!-- 댓글 -->
-                <div class="comment-wrap">
-                    <header class="comment-header">
-                        <p>
-                            이 사람 좋아요
-                            <span id="cardPop_like"> 32 </span>
+                </header>
+                <section class="userCard-content">
+                    <!-- 사용자 정보 -->
+                    <div class="aboutBox-content">
+                        <p id="userInfo-about">
+                            백엔드 개발자입니다.
                         </p>
                         <p>
                             최근 댓글
@@ -154,41 +138,62 @@
                                             2분전
                                         </p>
                                     </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </section>
-                    <footer class="comment-footer">
-                        <input id="comment-input" placeholder="댓글 달기..."/>
-                        <button class="reset_style_btn send-comment-btn">
-                            작성
-                        </button>
-                    </footer>
-                </div>
-            </footer>
+                                </li>
+                            </ul>
+                        </section>
+                        <footer class="comment-footer">
+                            <input id="comment-input" placeholder="댓글 달기..."/>
+                            <button class="reset_style_btn send-comment-btn">
+                                작성
+                            </button>
+                        </footer>
+                    </div>
+                </footer>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">유저 이름</h5>
+                <p class="card-text">자기소개</p>
+                <p class="mycomment">주특기 스택</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">유저 이름</h5>
+                <p class="card-text">자기소개</p>
+                <p class="mycomment">주특기 스택</p>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-    <button class="exit-card-pop-btn" onclick="hideCardPopup()">
-        <span class="material-icons exit-btn-icon">close</span>
-    </button>
-</div>
+      </div>
+    </section>
+    <footer class="footer_wrap"></footer>
 
-</section>
-<footer class="footer_wrap"></footer>
-<!-- 각자 작업한 JS 파일은 여기에 첨부 -->
-<script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"
-></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-        src=".././static/js/common/common.js"
-        type="application/javascript"
-></script>
-<script
-        src=".././static/js/card/card.js"
-        type="application/javascript"
-></script>
-</body>
+    <!-- 각자 작업한 JS 파일은 여기에 첨부 -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src=".././static/js/common/common.js"
+      type="application/javascript"
+    ></script>
+  </body>
 </html>

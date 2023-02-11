@@ -44,57 +44,54 @@
     <section class="profile_section_wrap">
       <form id="profileForm" method="post">
         <ul class="profile_section_content">
-          <li>
-            <label>
-              아이디(테스트용)
-              <input name="userId" type="text" />
-            </label>
-          </li>
-          <li>
-            <label>
-              사용자 이미지(테스트용)
-              <input name="image" type="text" />
-            </label>
-          </li>
-          <li>
-            <label>
-              닉네임
-              <input name="nick" type="text" />
-            </label>
-          </li>
-          <li>
-            <label>
-              자기소개
-              <input name="about" type="text" />
-            </label>
-          </li>
-          <li>
-            <label>
-              직업(주특기)
-              <input name="job" type="text" />
-            </label>
-          </li>
-          <li>
-            <label>
-              기술 스택
-              <input name="techStack" type="text" />
-            </label>
-          </li>
-          <li>
-            <label>
-              이메일
-              <input name="email" type="text" />
-            </label>
-          </li>
-          <li>
-            <label>
-              GitHub 주소
-              <input name="gitUrl" type="text" />
-            </label>
-          </li>
-          <button type="submit" class="reset_style_btn profile_save_btn">
-            변경사항 저장하기
-          </button>
+            <li>
+                <input id="uesrIdtest" name="userId" type="hidden" value="{{session['userId']}}"/>
+            </li>
+            <li>
+                <label>
+                    사용자 이미지(테스트용)
+                    <input name="image" type="text"/>
+                </label>
+            </li>
+            <li>
+                <label>
+                    닉네임
+                    <input name="nick" type="text"/>
+                </label>
+            </li>
+            <li>
+                <label>
+                    자기소개
+                    <input name="about" type="text"/>
+                </label>
+            </li>
+            <li>
+                <label>
+                    직업(주특기)
+                    <input name="job" type="text"/>
+                </label>
+            </li>
+            <li>
+                <label>
+                    기술 스택
+                    <input name="techStack" type="text"/>
+                </label>
+            </li>
+            <li>
+                <label>
+                    이메일
+                    <input name="email" type="text"/>
+                </label>
+            </li>
+            <li>
+                <label>
+                    GitHub 주소
+                    <input name="gitUrl" type="text"/>
+                </label>
+            </li>
+            <button type="submit" class="reset_style_btn profile_save_btn">
+                변경사항 저장하기
+            </button>dev
         </ul>
       </form>
     </section>
