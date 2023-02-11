@@ -1,5 +1,5 @@
 import requests
-from flask import Flask, render_template, request, jsonify, flash
+from flask import Flask, render_template, request, jsonify, flash, session
 from bs4 import BeautifulSoup
 from pymongo import MongoClient
 from flask_bcrypt import Bcrypt
@@ -11,11 +11,15 @@ client = MongoClient('mongodb+srv://test:sparta@cluster0.zhropba.mongodb.net/?re
                      tlsCAFile=ca)
 db = client.sparton
 app = Flask(__name__)
-
+app.secret_key = "secret"
 
 @app.route('/')
 def home():
     return render_template('index.html')
+@app.route("/card", methods=["GET"])
+def card_get():
+    card_list = list(db.card.find({},{'_id':False}))
+    return jsonify({'card':card_list})
 @app.route('/profile')
 def profileHome():
     return render_template('profile.html')
@@ -45,13 +49,40 @@ def profileMod():
 
     return jsonify({'msg': '내용 저장 완료'})
 
-#login
-@app.route('/login')
+# login
+
+
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == 'GET':
+        return render_template('login.html')
+    else:
+        userId = request.form['userId']
+        password = request.form['password']
+        exist_user = db.members.find_one({"userId":userId,"password":password})
+        print(exist_user)
+        if exist_user is None:
+            return ({'msg': '아이디/비밀번호를 다시 확인해 주세요!', "result": "fail"})
 
-    return render_template('login.html')
+        if exist_user:
+            session['userId'] = userId
+            session['userName'] = exist_user['userName']
+            session_info = '%s' %session
+            print(session_info)
+            return ({'msg': '로그인 성공!', "result": "success"})
 
-#signup
+# logout
+
+@app.route('/logout', methods=['GET'])
+def logout():
+    session.clear()
+    session_info = '%s' %session
+    print(session_info)
+    return ({'msg': '로그아웃 성공!', "result": "success"})
+
+# signup
+
+
 @app.route('/signUp', methods=['GET', 'POST'])
 def signUp():
     if request.method == 'GET':
@@ -79,8 +110,7 @@ def signUp():
         db.members.insert_one(doc)
 
         return ({'msg': '회원가입 성공!', "result": "success"})
-        
-#board
+
 @app.route('/board')
 def board():
     return render_template('board.html')
@@ -88,28 +118,37 @@ def board():
 
 @app.route("/board_save", methods=["POST"])
 def board_post():
+    # num_receive = request.form["num_give"]
     writer_receive = request.form["writer_give"]
     comment_receive = request.form["comment_give"]
     date_receive = request.form["date_give"]
 
     if writer_receive != '':
-        count = 1
-        for i in range(10):
-            doc = {
-                'num': count,
-                'writerId': writer_receive,
-                'comment': comment_receive,
-                'date': date_receive
-            }
-            db.board.insert_one(doc)
-            count += 1
+        doc = {
+            # 'num': num_receive,
+            'writerId': writer_receive,
+            'comment': comment_receive,
+            'date': date_receive
+        }
+        db.board.insert_one(doc)
     return jsonify({'msg': '댓글 작성 완료!'})
 
 
 @app.route("/boards", methods=["GET"])
 def board_get():
-    board_list = list(db.board.find({},{'_id':False}))
-    return jsonify({'board_list':board_list})
+    board_list = list(db.board.find({}, {'_id': False}))
+    return jsonify({'board_list': board_list})
+
+
+# my page
+@app.route('/mypage')
+def mypage():
+    return render_template('mypage.html')
+
+@app.route('/show', methods=["GET"])
+def show_get():
+    info = db.card.find_one({'userId':'hyuk'})
+    return jsonify({'userInfo': info})
 
 # port 는 자신이 사용할 port 지정
 if __name__ == '__main__':

@@ -19,3 +19,21 @@ function signup() {
         }
     })
 }
+function login() {
+    $.ajax({
+        type: 'post',
+        url: "/login",
+        data: {
+            userId: $('#login_userId').val(),
+            password: $('#login_password').val(),
+        },
+        success: function (response) {
+            console.log(response)
+            alert(response['msg'], response['result'])
+            if (response['result'] == 'success') {
+                window.location.href = '/'
+            }
+
+        }
+    })
+}

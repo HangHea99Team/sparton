@@ -45,10 +45,11 @@
             href=".././static/css/common/init.css"
     />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body>
-<header class="header_wrap">
-    <div class="login-mypage">
+  </head>
+  <body>
+    <header class="header_wrap">
+      <div class="login-mypage">
+        {{session['userName']}}
         <button onclick="open_login()" type="button">Login</button>
         <button onclick="open_signUP()" type="button">SignUp</button>
     </div>
@@ -58,26 +59,25 @@
         />
         <h1>Who R U</h1>
         <p>당신을 소개해주세요!</p>
-        <button onclick="open_box()">소개하기</button>
-    </div>
-</header>
-<section class="section_wrap">
-    <div class="mycards" id="comment-list">
+        <button type='button' onclick="location.href='profile'">소개하기</button>
+      </div>
+    </header>
+    <section class="section_wrap">
+      <div class="mycards" id="comment-list">
         <div class="row row-cols-1 row-cols-md-3 g-4" id="cards-box">
-            <div class="col" onclick="viewCardPopup('limgeon')">
-                <div class="card h-100">
-                    <img
-                        src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-                        class="card-img-top"
-                        alt="..."
-                    />
-                    <div class="card-body">
-                        <h5 class="user">유저 이름</h5>
-                        <p class="info">자기소개</p>
-                        <p class="job">직업</p>
-                        <p class="stack">주특기 스택</p>
-                    </div>
-                </div>
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                class="userImg"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="userName">유저 이름</h5>
+                <p class="info">자기소개</p>
+                <p class="job">직업</p>
+                <p class="stack">주특기 스택</p>
+              </div>
             </div>
         </div>
     </div>
