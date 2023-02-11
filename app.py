@@ -36,21 +36,52 @@ def profileMod():
     gitUrl_receive = request.form['gitUrl_give']
     like_receive = request.form['like_give']
 
-    doc = {
-        'userId': id_receive,
-        'userImg': image_receive,
-        'userName': nick_receive,
-        'info': about_receive,
-        'job': job_receive,
-        'stack': techStack_receive,
-        'email': email_receive,
-        'github': gitUrl_receive,
-        'like': int(like_receive),
-    }
+    userCardChk = db.card.find_one({'userId':id_receive})
 
-    db.card.insert_one(doc)
+    if userCardChk is not None:
+        # 수정하기
+        doc = {
+            'userImg': image_receive,
+            'info': about_receive,
+            'job': job_receive,
+            'stack': techStack_receive,
+            'email': email_receive,
+            'github': gitUrl_receive,
+        }
+        db.card.update_one({'userId':id_receive},{'$set':doc})
+        return jsonify({'msg': '내용 저장 완료'})
+    else :
+        # 신규입력
+        doc = {
+            'userId': id_receive,
+            'userImg': image_receive,
+            'userName': nick_receive,
+            'info': about_receive,
+            'job': job_receive,
+            'stack': techStack_receive,
+            'email': email_receive,
+            'github': gitUrl_receive,
+            'like': int(like_receive),
+        }
+        db.card.insert_one(doc)
+        db.members.update_one({'userId':id_receive},{'$set':{'writeCard':True}})
+        return jsonify({'msg': '내용 저장 완료'})
 
-    return jsonify({'msg': '내용 저장 완료'})
+@app.route("/card/chkWrite", methods=["GET"])
+def chkCardWrite():
+    userId = request.args.get('search_id')
+    userInfo = db.members.find_one({'userId':userId})
+
+    if userInfo is not None:
+        doc = {
+            'writeCard': userInfo['writeCard']
+        }
+        return jsonify({'userInfo':dumps(doc), 'msg': '사용자 정보 불러오기 완료'});
+    else :
+        doc = {
+            'writeCard': 'noLogin'
+        }
+        return jsonify({'userInfo':dumps(doc), 'msg': '사용자 정보 불러오기 완료'});
 
 @app.route("/card/detail", methods=["GET"])
 def getUserInfo():
