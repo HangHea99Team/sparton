@@ -1,0 +1,38 @@
+* {
+    font-family: 'Jua', sans-serif;
+}
+
+body {
+    background-color: skyblue;
+}
+
+a {
+    margin: 5px;
+}
+a.login-title {
+    text-decoration-line: none;
+}
+.wrap {
+    max-width: 400px;
+    width: 95%;
+    height: 400px;
+    background-color: snow;
+    margin: 10% auto;
+
+    border-radius: 20px;
+    box-shadow: rgba(99, 99, 99, 0.5) 0px 2px 8px 0px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.login {
+    text-align: center;
+}
+
+.sign {
+    margin: 10px;
+    width: 300px;
+}

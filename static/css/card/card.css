@@ -1,0 +1,242 @@
+.user-popup-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.user-popup-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 300px);
+    max-height: calc(100% - 800px);
+    min-height: 800px;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0 3px 13px rgba(0, 0, 0, 0.30), 0 4px 12px rgba(0, 0, 0, 0.22);
+    color: #333333;
+    padding: 20px;
+}
+
+.exit-card-pop-btn {
+    all: unset;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 28px;
+    height: 28px;
+    border-radius: 100%;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1;
+    color: #FFFFFF;
+}
+
+.exit-btn-icon {
+    font-size: 42px !important;
+}
+
+.user-popup-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0px;
+    background: #fcfcfc;
+}
+
+.userCard-header {
+    background-image: url("https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    position: relative;
+    height: 200px;
+}
+
+.userInfo-wrap {
+    position: absolute;
+    bottom: -90px;
+    left: 40px;
+    display: flex;
+    align-items: center;
+    width: calc(100% - 80px);
+    height: 180px;
+    gap: 18px;
+}
+
+.userInfo-image {
+    border-radius: 100%;
+    width: 180px;
+    height: 180px;
+}
+
+.userInfo-NameBox {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.userCard-content {
+    margin-top: 90px;
+    padding-top: 20px;
+    display: flex;
+    flex: 1;
+}
+
+.userCard-comment {
+    display: flex;
+    flex: 1;
+}
+
+.nameBox-header {
+    display: flex;
+    align-items: flex-end;
+    flex: 1;
+    color: #FFFFFF;
+    font-size: 24px;
+}
+
+.nameBox-footer {
+    display: flex;
+    flex: 1;
+    gap: 14px;
+    font-size: 18px;
+    font-weight: bold;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+.nameBox-footer div {
+    display: flex;
+    gap: 14px;
+}
+
+.aboutBox-content {
+    width: calc(100% - 90px);
+    max-height: 40px;
+    margin: 0 auto;
+}
+
+.comment-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.comment-header {
+    display: flex;
+    height: 40px;
+    gap: 20px;
+    align-items: center;
+    border-top: 2px solid #333333;
+}
+
+.comment-header button{
+    display: flex;
+    align-items: center;
+    gap:4px;
+}
+
+.comment-header span{
+    font-weight: bold;
+}
+
+.comment-section {
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height:calc(100% - 100px);
+    padding-top:0px;
+    padding-bottom: 12px;
+}
+
+.comment-footer {
+    display: flex;
+    height: 60px;
+    border-top: 2px solid #333333;
+}
+
+.comment-box{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding:0px;
+}
+
+.comment-item{
+    display: flex;
+    gap: 12px;
+}
+
+.comment-user img{
+    width:40px;
+    height:40px;
+    border-radius: 100%;
+}
+
+.comment-content{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 4px;
+}
+
+.content-box{
+    display: flex;
+    gap:6px;
+    font-size: 16px;
+}
+
+#comment-time{
+    font-size:14px;
+    color:#787878;
+}
+
+#comment-user-name{
+    font-weight: bold;
+}
+
+#comment-input{
+    all:unset;
+    display: flex;
+    flex:1;
+}
+
+.send-comment-btn{
+    width: 40px;
+    font-weight: bold;
+    color: #1453ff !important;
+}
+
+.nameBox-footer a{
+    all: unset;
+    cursor: pointer;
+    padding: 0px;
+}
+
+.userInfo-icon{
+    font-size: 28px;
+}
+
+.userInfo-img{
+    width:24px;
+    height: 24px;
+}
+
+#cardPop_like{
+    padding-top: 1px;
+}
