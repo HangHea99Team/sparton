@@ -16,6 +16,10 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return render_template('index.html')
+@app.route("/card", methods=["GET"])
+def card_get():
+    card_list = list(db.card.find({},{'_id':False}))
+    return jsonify({'card':card_list})
 @app.route('/profile')
 def profileHome():
     return render_template('profile.html')
