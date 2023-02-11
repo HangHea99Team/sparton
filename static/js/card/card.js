@@ -70,10 +70,6 @@ function saveReple() {
     })
 }
 
-function viewReple() {
-
-}
-
 function hideCardPopup() {
     signPopup.style.display = "none";
 }
@@ -96,6 +92,53 @@ function likeThisUser(){
         success: function (response) {
             let userInfo = JSON.parse(response['userInfo']);
             cardPopLike.innerText = userInfo['like'];
+        }
+    })
+}
+
+function checkProfileCard(){
+
+    let userId = document.getElementById('login-userId').value;
+    let cardModBtn = document.getElementById('card_mod_btn')
+
+    $.ajax({
+        type: 'GET',
+        url: '/card/chkWrite',
+        data: {
+            search_id: userId,
+        },
+        success: function (response) {
+            let writeChk = JSON.parse(response['userInfo']).writeCard;
+
+            if(!writeChk || writeChk =='noLogin'){
+                cardModBtn.innerText = '프로필 입력하기'
+            }else{
+                cardModBtn.innerText = '프로필 수정하기'
+            }
+        }
+    })
+}
+
+checkProfileCard();
+
+function moveToProfileMod(){
+    let userId = document.getElementById('login-userId').value;
+
+    $.ajax({
+        type: 'GET',
+        url: '/card/chkWrite',
+        data: {
+            search_id: userId,
+        },
+        success: function (response) {
+            let writeChk = JSON.parse(response['userInfo']).writeCard;
+
+            if(writeChk == 'noLogin') {
+                alert("로그인이 필요합니다.")
+                location.href = document.location.href+'login';
+            }else{
+                location.href = document.location.href+'profile';
+            }
         }
     })
 }
