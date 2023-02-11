@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, jsonify, flash, session
 from bson.json_util import dumps
 from bs4 import BeautifulSoup
 from pymongo import MongoClient
-from flask_bcrypt import Bcrypt
+from flask_bcrypt import Bcrypt, generate_password_hash, check_password_hash
 # 준영님 코드
 import certifi
 
@@ -97,17 +97,23 @@ def login():
     else:
         userId = request.form['userId']
         password = request.form['password']
-        exist_user = db.members.find_one({"userId":userId,"password":password})
+        encrypt_password = generate_password_hash(password, 10)
+        print(encrypt_password)
+        exist_user = db.members.find_one({'userId':userId})
+        #check_password_hash(check_pwd.get('user_pwd'), user_pwd)
+        #                                                 db에서 꺼낸 값                    pw입력값  
+        check_encrypt = check_password_hash(exist_user['password'],password)
+        print("체크할게욤",check_password_hash(exist_user['password'],password))
         print(exist_user)
-        if exist_user is None:
+        if check_encrypt != True:
             return ({'msg': '아이디/비밀번호를 다시 확인해 주세요!', "result": "fail"})
-
-        if exist_user:
+        else :
             session['userId'] = userId
             session['userName'] = exist_user['userName']
             session_info = '%s' %session
             print(session_info)
             return ({'msg': '로그인 성공!', "result": "success"})
+
 
 # logout
 
@@ -132,17 +138,18 @@ def signUp():
         password = request.form['pass1']
         password_check = request.form['pass2']
         email = request.form['email']
-        writeCard = False;
+        writeCard = False
         exist_user = db.members.find_one({"userId": userId})
         if exist_user:
             return ({'msg': "이미 존재하는 아이디 입니다.", "result": "fail"})
         if password != password_check:
             return ({'msg': "패스워드를 확인해 주세요", "result": "fail"})
-
+        encrypt_password = generate_password_hash(password, 10)
+        print(" 암호화",encrypt_password)
         doc = {
             "userId": userId,
             "userName": userName,
-            "password": password,
+            "password": encrypt_password,
             "email": email,
             "userImage": "https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMyAg/MDAxNjA0MjI5NDA4NDMy.5zGHwAo_UtaQFX8Hd7zrDi1WiV5KrDsPHcRzu3e6b8Eg.IlkR3QN__c3o7Qe9z5_xYyCyr2vcx7L_W1arNFgwAJwg.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%ED%8C%8C%EC%8A%A4%ED%85%94.jpg?type=w800",
             "writeCard": writeCard

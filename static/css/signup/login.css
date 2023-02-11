@@ -9,7 +9,9 @@ body {
 a {
     margin: 5px;
 }
-
+a.login-title {
+    text-decoration-line: none;
+}
 .wrap {
     max-width: 400px;
     width: 95%;
