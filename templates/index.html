@@ -153,33 +153,12 @@
                             </p>
                         </header>
                         <section class="comment-section">
-                            <ul class="comment-box">
-                                <li class="comment-item">
-                                    <div class="comment-user">
-                                        <img src=""
-                                             id="comment-user-img"/>
-                                    </div>
-                                    <div class="comment-content">
-                                        <div class="content-box">
-                                            <p id="comment-user-name">
-                                                Wooglim
-                                            </p>
-                                            <p id="comment-user-content">
-                                                이 사람 기가맥힙니다.
-                                            </p>
-                                        </div>
-                                        <div class="comment">
-                                            <p id="comment-time">
-                                                2분전
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
+                            <ul class="comment-box" id="reply-box">
                             </ul>
                         </section>
                         <footer class="comment-footer">
                             <input id="comment-input" placeholder="댓글 달기..."/>
-                            <button class="reset_style_btn send-comment-btn" onclick="saveReple()">
+                            <button class="reset_style_btn send-comment-btn" onclick="writeComment()">
                                 작성
                             </button>
                         </footer>
@@ -204,11 +183,11 @@
         type="application/javascript"
 ></script>
 <script
-        src=".././static/js/card/card.js"
+        src=".././static/js/card/comment.js"
         type="application/javascript"
 ></script>
 <script
-        src=".././static/js/card/reple.js"
+        src=".././static/js/card/card.js"
         type="application/javascript"
 ></script>
 </body>
