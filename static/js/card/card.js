@@ -6,6 +6,7 @@ const cardUserEmail = document.getElementById('userInfo-email');
 const cardUserGit = document.getElementById('userInfo-git');
 const cardUserAbout = document.getElementById('userInfo-about');
 const cardUserImg = document.getElementById('userInfo-image');
+const cardUserComment = document.getElementById('comment-input');
 
 function viewCardPopup(user) {
     $.ajax({
@@ -39,6 +40,29 @@ function viewCardPopup(user) {
         }
     })
     signPopup.style.display = "block";
+}
+
+function saveReple() {
+    let writerId = 'hhhhh'
+    let comment = $('#comment-input').val()
+    let today = new Date().toISOString().substring(0, 10)
+    let reple = cardUserId.innerText
+    $.ajax({
+        type: 'POST',
+        url: '/reple/save',
+        data: {
+            'writer_give': writerId, 'comment_give': comment, 'date_give': today, 'reple_give': reple
+        },
+        success: function (response) {
+            alert(response["msg"])
+            JSON.stringify(response["reple_list"])
+            alert(JSON.stringify(response["reple_list"]))
+        }
+    })
+}
+
+function viewReple() {
+
 }
 
 function hideCardPopup() {

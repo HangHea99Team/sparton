@@ -56,6 +56,29 @@ def getUserInfo():
     userInfo = db.card.find_one({'userId':userId})
     return jsonify({'userInfo':dumps(userInfo), 'msg': '사용자 정보 불러오기 완료'})
 
+@app.route("/reple/save", methods=["POST"])
+def saveReple():
+    # 1.클라이언트 에서 게시글의 제목을 받는다.
+    # 2.댓글을 저장할 때, 게시글의 제목도 같이 저장한다.
+    writer_receive = request.form['writer_give']
+    comment_receive = request.form['comment_give']
+    date_receive = request.form['date_give']
+    reple_receive = request.form['reple_give'] #1번
+
+    if writer_receive != '':
+        doc = { #2번
+            'writerId': writer_receive,
+            'comment': comment_receive,
+            'date': date_receive,
+            'reple': reple_receive
+        }
+        db.board.insert_one(doc)
+        # 3.저장한 게시글의 제목으로 댓글을 찾아온다.
+        find_reple = list(db.board.find({"reple": reple_receive},{'_id': False}))
+        print(find_reple)
+        reple_list = list(db.board.find({}, {'_id': False}))
+        return jsonify({'msg': '댓글 작성 완료!', 'reple_list': find_reple})
+
 # login
 
 
