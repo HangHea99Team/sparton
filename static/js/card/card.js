@@ -49,10 +49,11 @@ function viewCardPopup(user) {
             signPopup.style.display = "block";
         }
     })
+
 }
 
 function saveReple() {
-    let writerId = 'hhhhh'
+    let writerId = cardUserName.innerText
     let comment = $('#comment-input').val()
     let today = new Date().toISOString().substring(0, 10)
     let reple = cardUserId.innerText
@@ -64,8 +65,42 @@ function saveReple() {
         },
         success: function (response) {
             alert(response["msg"])
-            JSON.stringify(response["reple_list"])
-            alert(JSON.stringify(response["reple_list"]))
+            let rows = response["reple_list"]
+            // console.log(rows)
+
+            for(let i = 0; i < rows.length; i++) {
+                console.log(rows[i]['comment'])
+                let temp_html = `<li class="comment-item">
+                                    <div class="comment-user">
+                                        <img src=".././static/img/github-mark.png"
+                                             id="comment-user-img"/>
+                                    </div>
+                                    <div class="comment-content">
+                                        <div class="content-box">
+                                            <p id="comment-user-name">
+                                                ${rows[i]['writerId']}
+                                            </p>
+                                            <p id="comment-user-content">
+                                                ${rows[i]['comment']}
+                                            </p>
+                                        </div>
+                                        <div class="comment">
+                                            <p id="comment-time">
+                                                2분전
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>`
+            $('.comment-box').append(temp_html)
+
+            }
+
+            if (cardUserId == reple) {
+
+            }
+
+
+
         }
     })
 }
@@ -76,6 +111,7 @@ function viewReple() {
 
 function hideCardPopup() {
     signPopup.style.display = "none";
+    $('.comment-box').empty()
 }
 
 function isNull(str){

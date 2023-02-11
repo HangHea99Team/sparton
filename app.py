@@ -56,6 +56,8 @@ def profileMod():
 def getUserInfo():
     userId = request.args.get('search_id')
     userInfo = db.card.find_one({'userId':userId})
+
+    
     return jsonify({'userInfo':dumps(userInfo), 'msg': '사용자 정보 불러오기 완료'})
     
 @app.route("/card/likeUser", methods=["GET"])
@@ -86,6 +88,7 @@ def saveReple():
         # 3.저장한 게시글의 제목으로 댓글을 찾아온다.
         find_reple = list(db.board.find({"reple": reple_receive},{'_id': False}))
         print(find_reple)
+        print(reple_receive)
         reple_list = list(db.board.find({}, {'_id': False}))
         return jsonify({'msg': '댓글 작성 완료!', 'reple_list': find_reple})
 
