@@ -5,8 +5,11 @@ from pymongo import MongoClient
 
 # 준영님 코드
 import certifi
+import dns.resolver
 
-# DB 커넥션
+dns.resolver.default_resolver = dns.resolver.Resolver(configure=False)
+dns.resolver.default_resolver.nameservers = []
+
 ca = certifi.where()
 client = MongoClient('mongodb+srv://test:sparta@cluster0.zhropba.mongodb.net/Cluster0?retryWrites=true&w=majority',
                      tlsCAFile=ca)

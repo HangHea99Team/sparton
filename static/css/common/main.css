@@ -1,0 +1,92 @@
+
+* {
+  font-family: "Sunflower", sans-serif !important;
+}
+
+.section_wrap {
+    margin-bottom: 100px;
+}
+
+.header_wrap {
+    border-bottom: 10px dotted #9dc4fb;
+    margin-bottom: 50px;
+}
+
+.login-mypage {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;margin-top: 10px;
+    color: black;
+}
+
+.login-mypage > button {
+    border: none;
+}
+
+
+.mypic {
+  width: 100%;
+  height: 300px;
+
+  background-color: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0.5)
+  );
+  background-position: center 70%;
+  background-size: cover;
+
+  color: black;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mypic > img {
+  width: 500px;
+  height: 200px;
+  position: absolute;
+  padding: 10px;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.mypic > h1 {
+  font-size: 100px;
+}
+
+.mypic > p {
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+.mypic > button {
+    width: 80px;
+    height: 50px;
+
+    background-color: transparent;
+    color: #056bfa;
+
+    border-radius: 50px;
+    border: 2px dashed #056bfa;
+
+    margin-top: 20px;
+}
+
+.mypic > button:hover {
+    border: 3px dashed #0a3877;
+}
+
+.mycomment {
+  color: gray;
+}
+
+.mycards {
+  margin: 20px auto 0px auto;
+  width: 95%;
+  max-width: 1200px;
+}
+
