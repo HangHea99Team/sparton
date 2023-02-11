@@ -54,25 +54,18 @@ function open_login(){
 function close_login(){
     $('.login-btn').hide();
 }
+function open_logOut(){
+    $('.logOut-btn').show();
+}
+function close_logOut(){
+    $('.logOut-btn').hide();
+}
 
 if (user != '') {
     close_login();
+    open_logOut();
 }
 else{
     open_login();
+    close_logOut();
 }
-
-function open_mypage(){
-    $('.mypage-btn').show();
-}
-function close_mypage(){
-    $('.mypage-btn').hide();
-}
-
-if (user != '') {
-    open_mypage();
-}
-else{
-    close_mypage();
-}
-
