@@ -2,9 +2,173 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <title>게시판</title>
+    <style>
+        .table {
+            margin-left: 100px;
+            width: 70%;
+            text-align: center;
+        }
+
+        #savebtn {
+            text-align: center;
+            color: white;
+            background-color: black;
+        }
+        header {
+
+            position: fixed;
+            top: 0;
+            /* width: 100% */
+            left: 0;
+            right: 0;
+            height: 50px;
+            padding: 1rem;
+            color: white;
+            background: black;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-right: 50px;
+            z-index: 1;
+            opacity: 0.8;
+            /* 생략 */
+
+        }
+         a:link { color: red; text-decoration: none;
+         }
+
+        a:visited {
+            color: white;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: blue;
+            text-decoration: underline;
+        }
+        .board {
+            margin-top: 50px;
+        }
+        footer {
+            width: 100%;
+            height: 110px; /* 내용물에 따라 알맞는 값 설정 */
+            bottom: 0px;
+            position: absolute;
+            background: black;
+            color: white;
+            opacity: 0.8;
+            position: fixed;
+        }
+        .pagination {
+
+        }
+    </style>
+    <script>
+        let totalData; //총 글 수
+        let dataPerPage; //한 페이지에 나타낼 글 수
+        let pageCount = 3; //한 페이징에 나타낼 페이지 수
+        let currentPage = 1; //현재페이지
+        let dataList;
+
+        $(document).ready(function () {
+            show()
+
+         });
+
+        function save() {
+            // let writer = $('#writer').val() //localStorage 를 이용해 로그인 한 아이디를 브라우저에 저장해놓은 상태.
+            let comment = $('#comment').val()
+            let today = new Date().toISOString().substring(0, 10)
+            {#let writerId = localStorage.getItem('account'); //loginchk()실행 후 setItem으로 저장한 값 불러올 예정#}
+            let writerId = 'test'   //테스트용
+            if (writerId == '' || writerId == null) {
+                alert('로그인이 필요한 서비스 입니다.')
+                {#location.href = '/login'#}
+                location.href = '/'
+            } else if (comment == ''){
+                alert('한줄평은 공백이 될 수 없습니다.')
+                window.location.reload()
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: "/board_save",
+                    data: {'writer_give': writerId, 'comment_give': comment, 'date_give': today},
+                    success: function (response) {
+                        alert(response["msg"])
+                        window.location.reload()
+                    }
+                });
+            }
+        }
+
+        function show() {
+            // $('#board').empty()
+            $.ajax({
+                type: "GET",
+                url: "/boards",
+                data: {},
+                success: function (response) {
+                    let rows = response['board_list']
+                    for (let i = 0; i < rows.length; i++) {
+                        let num = rows[i]['num']
+                        let writer = rows[i]['writerId']
+                        let comment = rows[i]['comment']
+                        let date = rows[i]['date']
+                        console.log(num)
+
+                        let temp_html = `<tr>
+                                        <th scope="row">${writer}</th>
+                                        <td colspan="2">${comment}</td>
+                                        <td>${date}</td>
+                                        </tr>`
+                        $('#board').append(temp_html)
+                    }
+                }
+            });
+        }
+    </script>
 </head>
 <body>
-혁진 커밋 테스트
+
+    <div class="board">
+        <h1>댓글 게시판</h1>
+        <div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">작성자</th>
+                    <th scope="col" colspan="2">내용</th>
+                    <th scope="col">등록일</th>
+                </tr>
+                </thead>
+                <tbody class="table-group-divider" id="board">
+                <tr>
+                    <th scope="row"><input type="text" id="writer"  ></th>
+                    <td colspan="2"><input type="text" id="comment" placeholder="한줄 평 작성.."></td>
+                    <td id="savebtn" onclick="save()" type="button">한줄평 남기기</td>
+                </tr>
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
 </body>
 </html>
