@@ -79,7 +79,7 @@ def signUp():
         db.members.insert_one(doc)
 
         return ({'msg': '회원가입 성공!', "result": "success"})
-        
+
 #board
 @app.route('/board')
 def board():
@@ -108,6 +108,16 @@ def board_post():
 def board_get():
     board_list = list(db.board.find({},{'_id':False}))
     return jsonify({'board_list':board_list})
+
+# my page
+@app.route('/mypage')
+def mypage():
+    return render_template('mypage.html')
+
+@app.route('/show', methods=["GET"])
+def show_get():
+    info = db.card.find_one({'userId':'hyuk'})
+    return jsonify({'userInfo': info})
 
 # port 는 자신이 사용할 port 지정
 if __name__ == '__main__':
