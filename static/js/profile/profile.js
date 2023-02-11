@@ -28,14 +28,63 @@ profileForm.addEventListener("submit", function (event) {
         },
         success: function (response) {
             alert(response['msg'])
-            profileForm.elements[name = 'userId'].value = null;
-            profileForm.elements[name = 'image'].value = null;
-            profileForm.elements[name = 'nick'].value = null;
-            profileForm.elements[name = 'about'].value = null;
-            profileForm.elements[name = 'job'].value = null;
-            profileForm.elements[name = 'techStack'].value = null;
-            profileForm.elements[name = 'email'].value = null;
-            profileForm.elements[name = 'gitUrl'].value = null;
+            location.href = document.location.href.split('/')[0]+'//'+document.location.href.split('/')[2]+'/'
         }
     })
 });
+
+function checkProfileCard(){
+
+    let userId = document.getElementById('login-userId').value;
+    let profileHeader = document.getElementById('profile_mod_header')
+
+    $.ajax({
+        type: 'GET',
+        url: '/card/chkWrite',
+        data: {
+            search_id: userId,
+        },
+        success: function (response) {
+            let writeChk = JSON.parse(response['userInfo']).writeCard;
+
+            if(!writeChk){
+                profileHeader.innerText = '프로필 입력하기'
+            }else{
+                profileHeader.innerText = '프로필 수정하기'
+            }
+        }
+    })
+}
+
+function profileMod(){
+    let userId = document.getElementById('login-userId').value;
+
+    $.ajax({
+        type: 'GET',
+        url: '/card/detail',
+        data: {
+            search_id: userId,
+        },
+        success: function (response) {
+            let userInfo = JSON.parse(response['userInfo']);
+
+            if(userInfo == null){
+                return;
+            }
+
+            console.log(userInfo);
+            profileForm.elements[name = 'image'].value = userInfo.userImg;
+            profileForm.elements[name = 'nick'].value = userInfo.userName;
+            profileForm.elements[name = 'about'].value = userInfo.info;
+            profileForm.elements[name = 'job'].value = userInfo.job;
+            profileForm.elements[name = 'techStack'].value = userInfo.stack;
+            profileForm.elements[name = 'email'].value = userInfo.email;
+            profileForm.elements[name = 'gitUrl'].value = userInfo.github;
+        }
+    })
+}
+
+window.onload = () => {
+    checkProfileCard();
+    profileMod();
+}
