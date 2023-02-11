@@ -46,6 +46,9 @@ function viewCardPopup(user) {
             cardUserImg.src = userImg;
             cardPopLike.innerText = userLike;
 
+            $("#reply-box").empty();
+
+            loadComment();
             signPopup.style.display = "block";
         }
     })

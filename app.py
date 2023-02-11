@@ -6,6 +6,7 @@ from pymongo import MongoClient
 from flask_bcrypt import Bcrypt
 # 준영님 코드
 import certifi
+import time
 
 ca = certifi.where()
 client = MongoClient('mongodb+srv://test:sparta@cluster0.zhropba.mongodb.net/?retryWrites=true&w=majority',
@@ -96,6 +97,63 @@ def thisUserLike():
     db.card.update_one({'userId': userId}, {'$set': {'like': userInfo['like']+1}})
     userInfo = db.card.find_one({'userId':userId})
     return jsonify({'userInfo':dumps(userInfo), 'msg': '사용자 정보 불러오기 완료'})
+
+@app.route("/card/sendReply", methods=["POST"])
+def cardSendReply():
+    send_user = request.form['send_user']
+    target_user = request.form['target_user']
+    send_comment = request.form['send_comment']
+    date_time = str(time.strftime('%Y-%m-%d %H:%M:%S'));
+    currentComment = list(db.reply.find({'targetUser':target_user}).sort("num", -1).limit(1));
+
+    sender = db.members.find_one({'userId':send_user})
+    senderImg = db.card.find_one({'userId':send_user})
+
+    if senderImg['userImg'] is None:
+        senderImg = sender['userImage']
+    else:
+        senderImg = senderImg['userImg']
+
+    if len(currentComment) > 0:
+        # 이후 댓글
+        doc = {
+            'sendUser': send_user,
+            'sendUserImg': senderImg,
+            'sendUserName': sender['userName'],
+            'targetUser': target_user,
+            'sendComment': send_comment,
+            'dateTime': date_time,
+            'num': currentComment[0]['num']+1,
+        }
+        db.reply.insert_one(doc)
+        res = dumps(list(db.reply.find({'targetUser':target_user}).sort("num", 1)));
+        print(res)
+        return jsonify({'comments':res,'msg': '사용자 정보 불러오기 완료'})
+    else:
+        # 최초 댓글
+        doc = {
+            'sendUser': send_user,
+            'sendUserImg': sender['userImage'],
+            'sendUserName': sender['userName'],
+            'targetUser': target_user,
+            'sendComment': send_comment,
+            'dateTime': date_time,
+            'num': 0,
+        }
+        db.reply.insert_one(doc)
+        res = dumps(list(db.reply.find({'targetUser':target_user}).sort("num", 1)));
+        print(res)
+        return jsonify({'comments':res,'msg': '사용자 정보 불러오기 완료'})
+
+@app.route("/card/getReply", methods=["GET"])
+def cardGetReply():
+    target_user = request.args.get('target_id')
+
+    currentComment = list(db.reply.find({'targetUser':target_user}).sort("num", -1).limit(1));
+
+    print(len(currentComment))
+    res = dumps(list(db.reply.find({'targetUser':target_user}).sort("num", -1)));
+    return jsonify({'comments':res,'msg': '사용자 정보 불러오기 완료'})
 
 @app.route("/reple/save", methods=["POST"])
 def saveReple():
@@ -223,4 +281,4 @@ def show_get():
 
 # port 는 자신이 사용할 port 지정
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, debug=True)
+    app.run('0.0.0.0', port=5001, debug=True)
