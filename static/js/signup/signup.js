@@ -31,7 +31,9 @@ function login() {
             console.log(response)
             alert(response['msg'], response['result'])
             if (response['result'] == 'success') {
+                
                 window.location.href = '/'
+                
             }
 
         }
