@@ -1,0 +1,93 @@
+body {
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    color: #333333;
+    font-family: "Roboto", sans-serif;
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 1;
+    z-index: -2;
+}
+
+.profile_header_wrap {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    background-color: transparent;
+    opacity: 1;
+    transition: opacity 1.2s ease-in-out;
+    padding: 0 20px;
+    position: relative;
+    box-shadow: 0 4px 4px -4px black;
+}
+
+.profile_header_content{
+    width: 860px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 24px;
+}
+
+.profile_section_wrap{
+    padding-top: 60px;
+}
+
+.profile_section_content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
+    width: 860px;
+    margin: 0 auto;
+    gap:24px;
+}
+
+.profile_section_content label{
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.profile_section_content input{
+    margin-top: 8px;
+    border-radius: 4px;
+    font-size: 18px;
+    padding: 12px;
+}
+
+.profile_footer_wrap {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+    opacity: 1;
+}
+
+.previous_btn:hover{
+    color: dodgerblue;
+}
+
+.profile_save_btn{
+    padding:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:20px 0;
+    border: 4px solid black;
+    border-radius: 8px;
+    font-size: 24px;
+    background: #2b87ff;
+    color: #FFFFFF;
+    margin-top: 20px;
+}
+
+.profile_save_btn:hover{
+    background: #006fff;
+}
