@@ -49,7 +49,7 @@
   <body>
     <header class="header_wrap">
       <div class="login-mypage">
-        {{session['userName']}}
+      {{session['userName']}}
         <button onclick="open_login()" type="button">Login</button>
         <button onclick="open_signUP()" type="button">SignUp</button>
     </div>
@@ -65,20 +65,6 @@
     <section class="section_wrap">
       <div class="mycards" id="comment-list">
         <div class="row row-cols-1 row-cols-md-3 g-4" id="cards-box">
-          <div class="col">
-            <div class="card h-100">
-              <img
-                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-                class="userImg"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="userName">유저 이름</h5>
-                <p class="info">자기소개</p>
-                <p class="job">직업</p>
-                <p class="stack">주특기 스택</p>
-              </div>
-            </div>
         </div>
     </div>
 
@@ -88,20 +74,19 @@
                 <header class="userCard-header">
                     <!-- 프로필 이미지, 아이디, 유저명, 직업, 이메일, 깃허브 -->
                     <div class="userInfo-wrap">
-                        <img class="userInfo-image"
-                             src="https://avatars.githubusercontent.com/u/51357635?s=400&u=36fd01b69ccd7729620c086927f9c0847ffdb0e1&v=4"/>
+                        <img class="userInfo-image" id="userInfo-image"/>
                         <div class="userInfo-NameBox">
                             <div class="nameBox-header">
-                                <h3 class="userInfo-id">아이디</h3>
+                                <h3 class="userInfo-id" id="userInfo-id"></h3>
                             </div>
                             <div class="nameBox-footer">
                                 <div>
-                                    <span class="userInfo-name">유저명</span>
-                                    <span class="userInfo-job">직업</span>
+                                    <span class="userInfo-name" id="userInfo-name"></span>
+                                    <span class="userInfo-job" id="userInfo-job"></span>
                                 </div>
                                 <div>
-                                    <span class="userInfo-email">이메일</span>
-                                    <span class="userInfo-git">유저</span>
+                                    <span class="userInfo-email" id="userInfo-email"></span>
+                                    <span class="userInfo-git" id="userInfo-git"></span>
                                 </div>
                             </div>
                         </div>
@@ -110,7 +95,7 @@
                 <section class="userCard-content">
                     <!-- 사용자 정보 -->
                     <div class="aboutBox-content">
-                        <p>
+                        <p id="userInfo-about">
                             백엔드 개발자입니다.
                         </p>
                     </div>

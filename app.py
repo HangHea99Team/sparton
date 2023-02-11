@@ -1,5 +1,6 @@
 import requests
 from flask import Flask, render_template, request, jsonify, flash, session
+from bson.json_util import dumps
 from bs4 import BeautifulSoup
 from pymongo import MongoClient
 from flask_bcrypt import Bcrypt
@@ -48,6 +49,12 @@ def profileMod():
     db.card.insert_one(doc)
 
     return jsonify({'msg': '내용 저장 완료'})
+
+@app.route("/card/detail", methods=["GET"])
+def getUserInfo():
+    userId = request.args.get('search_id')
+    userInfo = db.card.find_one({'userId':userId})
+    return jsonify({'userInfo':dumps(userInfo), 'msg': '사용자 정보 불러오기 완료'})
 
 # login
 
