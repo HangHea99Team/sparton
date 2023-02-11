@@ -23,7 +23,8 @@ profileForm.addEventListener("submit", function (event) {
             job_give: job,
             techStack_give: techStack,
             email_give: email,
-            gitUrl_give: gitUrl
+            gitUrl_give: gitUrl,
+            like_give: '0'
         },
         success: function (response) {
             alert(response['msg'])

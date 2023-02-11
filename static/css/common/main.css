@@ -86,3 +86,9 @@
   max-width: 1200px;
 }
 
+.card_modify_btn{
+    width: 240px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
