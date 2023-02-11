@@ -5,16 +5,12 @@ from pymongo import MongoClient
 
 # 준영님 코드
 import certifi
-import dns.resolver
-
-dns.resolver.default_resolver = dns.resolver.Resolver(configure=False)
-dns.resolver.default_resolver.nameservers = []
 
 # DB 커넥션
-# ca = certifi.where()
-# client = MongoClient('',
-#                      tlsCAFile=ca)
-# db = client.dbsparta
+ca = certifi.where()
+client = MongoClient('',
+                     tlsCAFile=ca)
+db = client.sparton
 app = Flask(__name__)
 
 @app.route('/')
