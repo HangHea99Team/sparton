@@ -1,96 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>21조 토이프로젝트 항해 스크린</title>
 
-    <meta property="og:title" content="항해 스크린"/>
-    <meta property="og:description" content="21조 토이프로젝트 입니다."/>
-    <meta property="og:image"
-          content="https://s3.ap-northeast-2.amazonaws.com/blog.spartacodingclub.kr/sparta-supporters.png"/>
+    <meta property="og:title" content="항해 스크린" />
+    <meta property="og:description" content="21조 토이프로젝트 입니다." />
+    <meta
+      property="og:image"
+      content="https://s3.ap-northeast-2.amazonaws.com/blog.spartacodingclub.kr/sparta-supporters.png"
+    />
 
     <!-- 각자 작업한 CSS 파일은 여기에 첨부 -->
-    <link rel="stylesheet" type="text/css" href=".././static/css/common/reset.css">
-    <link rel="stylesheet" type="text/css" href=".././static/css/common/init.css">
-    <link rel="stylesheet" type="text/css" href=".././static/css/profile/profile.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-</head>
-<body>
-
-<header class="profile_header_wrap">
-    <content class="profile_header_content">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href=".././static/css/common/reset.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href=".././static/css/common/init.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href=".././static/css/profile/profile.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="profile_header_wrap">
+      <content class="profile_header_content">
         <button class="reset_style_btn previous_btn" onclick="history.back();">
-            <span class="material-icons">arrow_back</span>
+          <span class="material-icons">arrow_back</span>
         </button>
-        <h3> 프로필 수정하기 </h3>
-    </content>
-</header>
-<section class="profile_section_wrap">
-    <form id="profileForm" method="post">
+        <h3>프로필 수정하기</h3>
+      </content>
+    </header>
+    <section class="profile_section_wrap">
+      <form id="profileForm" method="post">
         <ul class="profile_section_content">
-            <li>
-                <label>
-                    아이디(테스트용)
-                    <input name="userId" type="text"/>
-                </label>
-            </li>
-            <li>
-                <label>
-                    사용자 이미지(테스트용)
-                    <input name="image" type="text"/>
-                </label>
-            </li>
-            <li>
-                <label>
-                    닉네임
-                    <input name="nick" type="text"/>
-                </label>
-            </li>
-            <li>
-                <label>
-                    자기소개
-                    <input name="about" type="text"/>
-                </label>
-            </li>
-            <li>
-                <label>
-                    직업(주특기)
-                    <input name="job" type="text"/>
-                </label>
-            </li>
-            <li>
-                <label>
-                    기술 스택
-                    <input name="techStack" type="text"/>
-                </label>
-            </li>
-            <li>
-                <label>
-                    이메일
-                    <input name="email" type="text"/>
-                </label>
-            </li>
-            <li>
-                <label>
-                    GitHub 주소
-                    <input name="gitUrl" type="text"/>
-                </label>
-            </li>
-            <button type="submit" class="reset_style_btn profile_save_btn">
-                변경사항 저장하기
-            </button>
+          <li>
+            <label>
+              아이디(테스트용)
+              <input name="userId" type="text" />
+            </label>
+          </li>
+          <li>
+            <label>
+              사용자 이미지(테스트용)
+              <input name="image" type="text" />
+            </label>
+          </li>
+          <li>
+            <label>
+              닉네임
+              <input name="nick" type="text" />
+            </label>
+          </li>
+          <li>
+            <label>
+              자기소개
+              <input name="about" type="text" />
+            </label>
+          </li>
+          <li>
+            <label>
+              직업(주특기)
+              <input name="job" type="text" />
+            </label>
+          </li>
+          <li>
+            <label>
+              기술 스택
+              <input name="techStack" type="text" />
+            </label>
+          </li>
+          <li>
+            <label>
+              이메일
+              <input name="email" type="text" />
+            </label>
+          </li>
+          <li>
+            <label>
+              GitHub 주소
+              <input name="gitUrl" type="text" />
+            </label>
+          </li>
+          <button type="submit" class="reset_style_btn profile_save_btn">
+            변경사항 저장하기
+          </button>
         </ul>
-    </form>
-</section>
+      </form>
+    </section>
 
-<!-- 각자 작업한 JS 파일은 여기에 첨부 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-<script src=".././static/js/common/common.js" type="application/javascript"></script>
-<script src=".././static/js/profile/profile.js" type="application/javascript"></script>
-
-</body>
+    <!-- 각자 작업한 JS 파일은 여기에 첨부 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src=".././static/js/common/common.js"
+      type="application/javascript"
+    ></script>
+    <script
+      src=".././static/js/profile/profile.js"
+      type="application/javascript"
+    ></script>
+  </body>
 </html>
