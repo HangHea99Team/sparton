@@ -17,9 +17,11 @@ dns.resolver.default_resolver.nameservers = []
 # db = client.dbsparta
 app = Flask(__name__)
 
+
 @app.route('/')
 def home():
     return render_template('index.html')
+
 
 # port 는 자신이 사용할 port 지정
 if __name__ == '__main__':
