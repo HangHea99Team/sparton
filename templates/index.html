@@ -59,8 +59,9 @@
     <div class="login-mypage">
         <p class="user" style="padding-top: 4px; margin-right: 8px;">
             <input id="login-userId" type="hidden" value="{{ session['userId'] }}"/>
-            {{ session['userName'] }}님 어서오세요!
+            {{ session['userName'] }}
         </p>
+        <P>님 어서오세요!</P>
         <div class="login-btn">
             <button class="login" type="button" onclick="location.href='login'">Login</button>
             <button class="signUp" type="button" onclick="location.href='signUp'">SignUp</button>
