@@ -14,7 +14,6 @@ function listing() {
                 let userId = rows[i]['userId']
                 let userImg = rows[i]['userImg']
                 let userName = rows[i]['userName']
-                let info = rows[i]['info']
                 let job = rows[i]['job']
                 let stack = rows[i]['stack']
 
@@ -24,9 +23,8 @@ function listing() {
                                              class="userImg">
                                         <div class="card-body">
                                             <h5 class="userName">${userName}</h5>
-                                            <p class="info">${info}</p>
                                             <p class="job">${job}</p>
-                                            <p class="stack">${stack}</p>
+                                            <span class="stack">${stack}</span>
                                         </div>
                                     </div>
                                 </div>`
@@ -37,10 +35,44 @@ function listing() {
     })
 }
 
-function open_login() {
-  alert("로그인 버튼 클릭!")
+function out() {
+    $.ajax({
+        type: 'GET',
+        url: '/logout',
+        data: {},
+        success: function (response) {
+            alert(response["msg"])
+            window.location.reload()               
+        }
+    })
 }
 
-function open_signUP() {
-  alert("로그인 버튼 클릭!")
+const user = document.querySelector(".user").innerText;
+function open_login(){
+    $('.login-btn').show();
 }
+function close_login(){
+    $('.login-btn').hide();
+}
+
+if (user != '') {
+    close_login();
+}
+else{
+    open_login();
+}
+
+function open_mypage(){
+    $('.mypage-btn').show();
+}
+function close_mypage(){
+    $('.mypage-btn').hide();
+}
+
+if (user != '') {
+    open_mypage();
+}
+else{
+    close_mypage();
+}
+
